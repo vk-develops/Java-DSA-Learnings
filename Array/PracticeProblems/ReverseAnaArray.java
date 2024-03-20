@@ -2,6 +2,25 @@ package Array.PracticeProblems;
 
 public class ReverseAnaArray {
 
+    public static int[] reverseArrayRecursionHelper(int arr[], int start, int end){
+        if(start >= end){
+            return arr;
+        }
+
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+
+        reverseArrayRecursionHelper(arr, start + 1, end - 1);
+
+        return arr;
+    }
+
+    public static int[] reverseArrayUsingRecursion(int arr[]){
+        int res[] = reverseArrayRecursionHelper(arr, 0, arr.length - 1);
+        return res;
+    }
+
     public static int[] reverseArray(int arr[]){
         int start = 0;
         int end = arr.length - 1;
@@ -29,8 +48,12 @@ public class ReverseAnaArray {
         int arr[] = {5, 6, 7, 2, 3, 4};
         printArray(arr);
 
+        // System.out.println("");
+        // int res[] = reverseArray(arr);
+        // printArray(res);
+
         System.out.println("");
-        int res[] = reverseArray(arr);
+        int res[] = reverseArrayUsingRecursion(arr);
         printArray(res);
     }
 }
